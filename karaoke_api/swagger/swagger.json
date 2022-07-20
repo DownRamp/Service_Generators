@@ -1,0 +1,262 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Karaoke api for finding which songs are popular right now",
+        "version": "1.0.0",
+        "title": "Karaoke API",
+        "contact": {
+            "email": "abc@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "schemes": ["http"],
+    "host": "localhost:5472",
+    "basePath": "/api",
+    "paths" : {
+        "/resume/{id}" : {
+            "get" : {
+                "summary" : "Get persons resume",
+                "description": "Get resume with id",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of resume",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/resumeResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/resume" : {
+            "post" : {
+                "summary" : "Create a resume",
+                "description": "Create a resume",
+                "produces": ["application/json"],
+                "consumes": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "search object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "resume" : {
+                                    "type": "object",
+                                    "$ref": "#/definitions/Create"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/resumeResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/resume/exp" : {
+            "post" : {
+                "summary" : "Add an experience to resume",
+                "description": "Add to resume",
+                "produces": ["application/json"],
+                "consumes": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Resume object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "resume" : {
+                                    "type": "object",
+                                    "$ref": "#/definitions/ResumeData"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/resumeResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/resume/search" : {
+            "post" : {
+                "summary" : "Search for resume with query",
+                "description": "Search for resume",
+                "produces": ["application/json"],
+                "consumes": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "search object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "resume" : {
+                                    "type": "object",
+                                    "$ref": "#/definitions/Search"
+                                } 
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/resumeResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        }
+    }, 
+    "definitions": {
+        "resumeResponse": {
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "contact": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "experience": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/ResumeData"
+                    }                }
+            }
+        },
+        "ResumeData": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "date": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "Search": {
+            "type": "object",
+            "properties": {
+                "location": {
+                    "type": "string"
+                },
+                "experience": {
+                    "type": "string"
+                },
+                "education": {
+                    "type": "string"
+                }
+            }
+        },
+        "Create": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "contact": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            }
+        },
+        "InvalidResponse": {
+            "type": "object",
+            "properties": {
+                "statusCode": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+
+        }
+    }
+}
