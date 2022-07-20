@@ -1,0 +1,20 @@
+{
+    "choices":[
+        [{"vegan chilli": "https://www.twopeasandtheirpod.com/vegetarian-quinoa-chili/"},
+            {"lentils": "https://cookieandkate.com/best-lentil-soup-recipe/"},
+            {"black bean power bowl": "https://www.emilieeats.com/black-bean-buddha-bowl-avocado-pesto/"},
+            {"stuffed peppers":"https://minimalistbaker.com/spanish-quinoa-stuffed-peppers/"},
+            {"Falafel waffle":"https://www.emilieeats.com/vegan-falafel-waffles/"},
+            {"falafel wrap": "https://www.themediterraneandish.com/how-to-make-falafel/"}],
+        [{"eggs": "bought"},
+           {"":""}],
+        [{"Vegan crackers":"Buy it"},
+            {"Vegan shawarma":"https://www.themediterraneandish.com/vegan-shawarma/"},
+            {"crispy rice":"https://www.themediterraneandish.com/mujadara-lentils-and-rice-with-crispy-onions/"}
+            ],
+        [{"chicken stir fry":"throw anything in"}],
+        [{"peanut butter and banana": "MAKE"},
+            {"peanut butter, fruit, and oatmeal":"MAKE"},
+            {"cereal,fruit, and oat milk":"MAKE"}]
+    ]
+}
