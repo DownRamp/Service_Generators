@@ -4,21 +4,17 @@ from bs4 import BeautifulSoup
 import matplotlib.pyplot as plt
 import csv
 
-# start scrapper
-# https://github.com/DGGomez?tab=repositories
-
 csv_file = "portfolio_breakdown.csv"
 
 def git_check():
     portfolio = {}
 
-    url = "https://github.com/DGGomez?tab=repositories"
+    url = "https://github.com/DownRamp?tab=repositories"
     page = requests.get(url)
     if page.ok:
         soup = BeautifulSoup(page.content, "html.parser")
         results = soup.find_all("li", itemprop="owns")
 
-        # Add languages to list and github link to list
         for result in results:
             name = result.find("a")
             lang = result.find("span", itemprop="programmingLanguage")
@@ -32,6 +28,7 @@ def git_check():
         # add up experience
         labels = portfolio.keys()
         sizes = []
+        # For pie graph
         for i in labels:
             sizes.append(len(portfolio[i]))
 
